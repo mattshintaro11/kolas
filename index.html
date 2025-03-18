@@ -568,107 +568,6 @@
             transform: translateY(-3px);
         }
         
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: var(--bg-secondary);
-            margin: auto;
-            padding: 2.5rem;
-            border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            transform: translateY(-20px);
-            opacity: 0;
-            transition: all 0.3s ease-out;
-        }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .modal-header {
-            margin-bottom: 2rem;
-        }
-        
-        .modal-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-body {
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-color);
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close-modal:hover {
-            color: var(--text-color);
-        }
-        
-        .success-message {
-            padding: 1rem;
-            background-color: rgba(46, 204, 113, 0.1);
-            border: 1px solid rgba(46, 204, 113, 0.3);
-            color: #2ecc71;
-            border-radius: 4px;
-            margin-bottom: 1.5rem;
-            display: none;
-        }
-        
         /* Responsive Adjustments */
         @media (max-width: 1200px) {
             .container {
@@ -744,32 +643,32 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container">
-            <nav>
-                <a href="#" class="logo">KOLAS</a>
-                <ul class="nav-links">
-                    <li><a href="#solutions">Solutions</a></li>
-                    <li><a href="#data">Technology</a></li>
-                    <li><a href="#testimonials">Clients</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-                <a href="#contact" class="btn btn-primary">Contact Us</a>
-            </nav>
+          <nav>
+            <a href="#" class="logo">KOLAS</a>
+            <ul class="nav-links">
+              <li><a href="#solutions">Solutions</a></li>
+              <li><a href="#data">Technology</a></li>
+              <li><a href="#testimonials">Clients</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Contact Us</a>
+          </nav>
         </div>
-    </header>
+      </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Financial Software</h1>
-                <p>Empowering financial institutions with cutting-edge software solutions that transform data into strategic advantage.</p>
-                <div class="btn-group">
-                    <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
-                    <a href="#" class="btn btn-outline" id="request-demo-btn">Request Demo</a>
-                </div>
+          <div class="hero-content">
+            <h1>Financial Software</h1>
+            <p>Empowering financial institutions with cutting-edge software solutions that transform data into strategic advantage.</p>
+            <div class="btn-group">
+              <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
+              <a href="#demo" class="btn btn-outline">Request Demo</a>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Features Section -->
     <section class="section section-dark" id="solutions">
@@ -843,4 +742,107 @@
                         </div>
                         <div class="data-point">
                             <h4>27x</h4>
-                            <p>Faster
+                            <p>Faster data processing capabilities</p>
+                        </div>
+                        <div class="data-point">
+                            <h4>$225,000</h4>
+                            <p>Average annual savings for enterprise clients</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                </div>
+                <div class="data-image">
+                    <div class="data-graphic">
+                        <i class="fas fa-chart-network"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client Outcomes</h2>
+                <p class="section-subtitle">How leading financial institutions transform their operations with our solutions.</p>
+            </div>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Kolas' risk analytics platform has fundamentally changed how we evaluate market exposure. Their system identified correlation patterns that our legacy systems missed entirely, allowing us to reduce portfolio volatility by 22% while maintaining returns."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/api/placeholder/60/60" alt="placeholder" />
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Chief Risk Officer, Capital Investment Partners</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The compliance automation suite has transformed our regulatory operations. What previously required a team of 14 can now be accomplished by 3 analysts, with greater accuracy and more comprehensive documentation. The ROI was evident within the first quarter."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="/api/placeholder/60/60" alt="placeholder" />
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Global Compliance Director, Meridian Financial Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Advance Your Financial Technology</h2>
+            <p>Join industry leaders who have transformed their operations with our enterprise-grade financial software solutions.</p>
+            <a href="#contact" class="btn btn-primary">Request a Demonstration</a>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <h4>Footer Heading</h4>
+              <!-- Footer content -->
+            </div>
+            <!-- Other footer columns -->
+          </div>
+          <div class="copyright">
+            © 2025 Kolas Technologies. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    
+      <!-- JavaScript to prompt for email and show a message -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Function to handle the click event
+          function promptEmail(e) {
+            e.preventDefault(); // Prevent default navigation
+            var email = prompt("Please enter your email address:");
+            if (email && email.trim() !== "") {
+              // Optional: Add regex validation for email format if needed.
+              alert("Thanks! A team member will reach out to you shortly.");
+            } else {
+              alert("Please enter a valid email address to continue.");
+            }
+          }
+          
+          // Select all buttons that should trigger the prompt.
+          var actionButtons = document.querySelectorAll('a[href="#contact"], a[href="#demo"]');
+          actionButtons.forEach(function(button) {
+            button.addEventListener("click", promptEmail);
+          });
+        });
+      </script>
+    </body>
+    </html>
