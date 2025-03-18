@@ -1,43 +1,52 @@
-class Modal {
-    constructor(modalId, messageHandler) {
-      this.modal = document.getElementById(modalId);
-      this.messageHandler = messageHandler;
-      this.init();
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('emailModal');
+    const demoBtn = document.querySelector('a[href="#demo"]');
+    const closeBtn = document.querySelector('.close');
+    const submitBtn = document.getElementById('submitEmail');
+    const emailInput = document.getElementById('userEmail');
+  
+    // Open modal with animation
+    demoBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+      // Trigger reflow for animation to work
+      void modal.offsetWidth;
+      modal.classList.add('active');
+    });
+  
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400);
     }
   
-    init() {
-      this.submitButton = this.modal.querySelector('#submitEmail');
-      this.emailInput = this.modal.querySelector('#userEmail');
-      this.closeBtn = this.modal.querySelector('.close');
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
   
-      // When the submit button is clicked, validate and respond
-      this.submitButton.addEventListener('click', () => {
-        if (this.emailInput.value.trim() !== "") {
-          this.messageHandler.showMessage("Thanks! A team member will reach out to you shortly.");
-          this.closeModal();
-        } else {
-          this.messageHandler.showMessage("Please enter a valid email address.");
-        }
-      });
+    // Submit email
+    submitBtn.addEventListener('click', function() {
+      const email = emailInput.value.trim();
+      if (email && validateEmail(email)) {
+        showMessage('Thank you! Demo request received.');
+        emailInput.value = '';
+        closeModal();
+      } else {
+        showMessage('Please enter a valid email address.', 'error');
+      }
+    });
   
-      // Close modal on clicking the close button
-      this.closeBtn.addEventListener('click', () => this.closeModal());
-  
-      // Close modal when clicking outside of modal content
-      window.addEventListener("click", (event) => {
-        if (event.target === this.modal) {
-          this.closeModal();
-        }
-      });
+    // Email validation function
+    function validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
     }
-  
-    openModal() {
-      this.modal.style.display = 'block';
-    }
-  
-    closeModal() {
-      this.modal.style.display = 'none';
-      this.emailInput.value = "";
-    }
-  }
-  
+  });
