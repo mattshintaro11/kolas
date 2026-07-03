@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kolas Technologies | Cloud-Based Scraping Solutions</title>
+  <title>Kolas Technologies | AI Infrastructure for Investment Teams</title>
+  <meta name="description" content="Kolas builds secure knowledge layers and specialist AI agents for diligence, sourcing, reporting, portfolio monitoring, CRM enrichment, and internal research." />
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('kolas-theme') || 'dark'; } catch (e) {}
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    /* Import fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-
     /* Reset and Base Styles */
     * {
       margin: 0;
@@ -17,14 +17,45 @@
       box-sizing: border-box;
     }
     :root {
-      --text-color: rgba(255, 255, 255, 0.9);
-      --text-secondary: rgba(255, 255, 255, 0.7);
-      --bg-color: #0a0b0d;
-      --bg-secondary: #131417;
+      --text-color: #37352F;
+      --text-secondary: rgba(55, 53, 47, 0.65);
+      --bg-color: #ffffff;
+      --bg-secondary: #f7f7f5;
       --accent-color: #5282FF;
       --accent-secondary: #4070FF;
-      --font-primary: 'Roboto', sans-serif;
-      --font-display: 'Playfair Display', serif;
+      --accent-soft: rgba(82, 130, 255, 0.09);
+      --border-color: rgba(55, 53, 47, 0.25);
+      --border-subtle: rgba(55, 53, 47, 0.1);
+      --card-bg: #ffffff;
+      --card-hover-shadow: rgba(15, 15, 15, 0.08);
+      --shadow-color: rgba(15, 15, 15, 0.15);
+      --overlay: rgba(15, 15, 15, 0.6);
+      --glow: rgba(82, 130, 255, 0.07);
+      --grid-line: rgba(55, 53, 47, 0.06);
+      --header-bg: rgba(255, 255, 255, 0.8);
+      --chip-bg: #f7f7f5;
+      --font-primary: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    [data-theme="dark"] {
+      --text-color: rgba(255, 255, 255, 0.92);
+      --text-secondary: rgba(255, 255, 255, 0.64);
+      --bg-color: #0a0b0d;
+      --bg-secondary: #101216;
+      --border-color: rgba(255, 255, 255, 0.28);
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --card-bg: rgba(255, 255, 255, 0.025);
+      --card-hover-shadow: rgba(0, 0, 0, 0.35);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --overlay: rgba(10, 11, 15, 0.9);
+      --glow: rgba(82, 130, 255, 0.09);
+      --grid-line: rgba(255, 255, 255, 0.04);
+      --header-bg: rgba(10, 11, 13, 0.78);
+      --chip-bg: rgba(255, 255, 255, 0.05);
+      --accent-soft: rgba(82, 130, 255, 0.12);
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
       color: var(--text-color);
@@ -32,66 +63,115 @@
       font-family: var(--font-primary);
       line-height: 1.6;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    section {
+      scroll-margin-top: 90px;
     }
     /* Typography */
     h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-display);
-      font-weight: 500;
+      font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      display: block;
+      margin-bottom: 1.25rem;
     }
     /* Layout */
     .container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-    /* Navigation */
+    .section {
+      padding: 7rem 0;
+    }
+    .section-alt {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 4rem;
+    }
+    .section-header.centered {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+    }
+    /* Header & Navigation */
     header {
-      padding: 1.5rem 0;
-      position: absolute;
+      position: fixed;
+      top: 0;
       width: 100%;
       z-index: 100;
+      background-color: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.3s ease;
     }
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 68px;
+      gap: 1.5rem;
     }
     .logo {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 500;
+      font-size: 1.4rem;
+      font-weight: 700;
       color: var(--text-color);
       text-decoration: none;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.04em;
+    }
+    .logo span {
+      color: var(--accent-color);
     }
     .nav-links {
       display: flex;
       list-style: none;
-    }
-    .nav-links li {
-      margin-left: 2rem;
+      gap: 2rem;
     }
     .nav-links a {
       text-decoration: none;
       color: var(--text-secondary);
-      font-weight: 400;
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 0.9rem;
       transition: color 0.3s;
     }
     .nav-links a:hover {
       color: var(--text-color);
     }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
     .btn {
       display: inline-block;
-      padding: 0.8rem 2rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      padding: 0.75rem 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       text-decoration: none;
+      border-radius: 6px;
       transition: all 0.3s;
       border: none;
       cursor: pointer;
@@ -102,305 +182,465 @@
     }
     .btn-primary:hover {
       background-color: var(--accent-secondary);
+      transform: translateY(-1px);
     }
     .btn-outline {
       background-color: transparent;
       color: var(--text-color);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid var(--border-color);
     }
     .btn-outline:hover {
+      border-color: var(--text-color);
+    }
+    .btn-sm {
+      padding: 0.55rem 1.2rem;
+      font-size: 0.85rem;
+    }
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .theme-toggle:hover {
+      color: var(--text-color);
       border-color: var(--text-color);
     }
     /* Hero Section */
     .hero {
       position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: radial-gradient(circle at top right, rgba(10, 11, 15, 0.5) 0%, var(--bg-color) 70%);
+      padding: 12rem 0 8rem;
       overflow: hidden;
     }
     .hero::before {
       content: "";
       position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(82, 130, 255, 0.1) 0%, rgba(10, 11, 15, 0) 70%);
-      z-index: 1;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 20%, transparent 75%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 700px;
+      background: radial-gradient(ellipse at center, var(--glow) 0%, transparent 65%);
+      pointer-events: none;
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
     }
     .hero h1 {
-      font-size: 5rem;
-      line-height: 1.1;
-      margin-bottom: 2rem;
-      font-weight: 500;
+      font-size: 4.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.75rem;
     }
-    .hero p {
+    .hero p.subhead {
       font-size: 1.25rem;
-      max-width: 550px;
-      margin-bottom: 3rem;
       color: var(--text-secondary);
-      font-weight: 300;
+      max-width: 720px;
+      margin: 0 auto 2.75rem;
     }
     .btn-group {
       display: flex;
       gap: 1rem;
+      justify-content: center;
     }
-    /* Solutions Section */
-    .section {
-      padding: 8rem 0;
-    }
-    .section-dark {
-      background-color: var(--bg-secondary);
-    }
-    .section-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 5rem;
-    }
-    .section-title {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title::after {
-      content: "";
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 3px;
-      background-color: var(--accent-color);
-    }
-    .section-subtitle {
-      font-size: 1.25rem;
+    .hero-credibility {
+      margin-top: 3.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--text-secondary);
-      font-weight: 300;
     }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 3rem;
-    }
-    .feature-card {
-      position: relative;
-      background-color: rgba(19, 20, 23, 0.6);
-      border-radius: 4px;
-      padding: 3rem;
-      transition: all 0.3s;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-color), rgba(82, 130, 255, 0.1));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
-    }
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-    .feature-icon {
-      font-size: 2rem;
-      color: var(--accent-color);
-      margin-bottom: 1.5rem;
-    }
-    .feature-card h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .feature-card p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      font-weight: 300;
-    }
-    /* Data Visualization Section */
-    .data-viz {
-      position: relative;
-      padding: 8rem 0;
-      background-color: var(--bg-color);
-    }
-    .data-grid {
+    /* Problem Section */
+    .problem-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      align-items: center;
+      align-items: start;
     }
-    .data-content h2 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
+    .problem-copy .section-title {
+      margin-bottom: 1.5rem;
     }
-    .data-content p {
+    .problem-copy p {
       color: var(--text-secondary);
-      margin-bottom: 2.5rem;
-      font-size: 1.125rem;
-      font-weight: 300;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
     }
-    .data-points {
+    .chip-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
     }
-    .data-point {
-      flex: 1 0 45%;
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      background-color: var(--chip-bg);
+      color: var(--text-secondary);
+      white-space: nowrap;
     }
-    .data-point h4 {
-      font-size: 3rem;
-      font-family: var(--font-primary);
-      font-weight: 300;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
+    .questions-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 2.25rem;
     }
-    .data-point p {
-      font-size: 1rem;
-      margin-bottom: 0;
+    .questions-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
     }
-    .data-image {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      background: radial-gradient(circle at center, rgba(82, 130, 255, 0.1) 0%, rgba(10, 11, 15, 0) 70%);
-      border-radius: 4px;
-      overflow: hidden;
+    .questions-card ul {
+      list-style: none;
     }
-    .data-image::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%235282FF' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z");
-      opacity: 0.3;
-    }
-    .data-graphic {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
+    .questions-card li {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 5rem;
-      color: var(--accent-color);
-      opacity: 0.5;
-    }
-    /* Testimonials Section */
-    .testimonials {
-      padding: 8rem 0;
-      position: relative;
-    }
-    .testimonials::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235282FF' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .testimonial-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .testimonial-card {
-      background-color: rgba(19, 20, 23, 0.7);
-      padding: 3rem;
-      border-radius: 4px;
-      margin-bottom: 4rem;
-      position: relative;
-    }
-    .testimonial-quote {
-      font-size: 1.5rem;
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      font-style: italic;
-      font-weight: 300;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-    }
-    .author-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #2a2a2a;
-      margin-right: 1.5rem;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .author-info h4 {
-      font-size: 1.25rem;
-      margin-bottom: 0.25rem;
-      font-family: var(--font-primary);
+      gap: 0.9rem;
+      align-items: baseline;
+      padding: 0.8rem 0;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 1.05rem;
       font-weight: 500;
     }
-    .author-info p {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
+    .questions-card li i {
+      color: var(--accent-color);
+      font-size: 0.85rem;
+      flex-shrink: 0;
     }
-    /* CTA Section */
+    /* Platform / Architecture Section */
+    .platform-intro {
+      max-width: 720px;
+      margin-bottom: 4rem;
+    }
+    .platform-intro p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+    }
+    .arch {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .arch-layer {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem 2rem;
+    }
+    .arch-layer.arch-core {
+      border-color: var(--accent-color);
+      background:
+        linear-gradient(var(--accent-soft), transparent 80%),
+        var(--card-bg);
+      box-shadow: 0 0 40px var(--glow);
+    }
+    .arch-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+    .arch-label .num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-color);
+      letter-spacing: 0.1em;
+    }
+    .arch-label h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .arch-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .arch-arrow {
+      text-align: center;
+      padding: 0.9rem 0;
+      color: var(--accent-color);
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    /* Agents Section */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .agent-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .agent-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px var(--card-hover-shadow);
+    }
+    .agent-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: var(--accent-soft);
+      color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .agent-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+    .agent-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    /* Use Cases Section */
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .usecase-card {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+    .usecase-card:hover {
+      border-color: var(--accent-color);
+    }
+    .usecase-card i {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+      width: 1.2rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    /* Proof Section */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .proof-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .proof-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 1.75rem;
+    }
+    .proof-stat {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+    .proof-stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .proof-card p.proof-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: auto;
+    }
+    .proof-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    /* Security Section */
+    .security-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .security-copy p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-top: 1.5rem;
+    }
+    .security-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1rem 2rem;
+    }
+    .security-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+    .security-list li:first-child {
+      border-top: none;
+    }
+    .security-list li i {
+      color: var(--accent-color);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    /* How We Work Section */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .step-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem;
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-color);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 1.1rem;
+    }
+    .step-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .step-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .pilot-callout {
+      border: 1px solid var(--accent-color);
+      background:
+        linear-gradient(var(--accent-soft), transparent 90%),
+        var(--card-bg);
+      border-radius: 10px;
+      padding: 1.75rem 2.25rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .pilot-callout p {
+      font-size: 1rem;
+      max-width: 640px;
+    }
+    .pilot-callout p strong {
+      font-weight: 600;
+    }
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-grid p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    .about-grid p:last-child {
+      margin-bottom: 0;
+    }
+    /* Final CTA Section */
     .cta {
-      padding: 8rem 0;
-      background: linear-gradient(120deg, var(--bg-secondary), var(--bg-color));
       position: relative;
+      padding: 8rem 0;
       overflow: hidden;
     }
     .cta::before {
       content: "";
       position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(82, 130, 255, 0.1) 0%, rgba(10, 11, 15, 0) 70%);
-      z-index: 1;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, var(--glow) 0%, transparent 65%);
+      pointer-events: none;
     }
     .cta-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
+      max-width: 680px;
       margin: 0 auto;
       text-align: center;
     }
     .cta h2 {
-      font-size: 3.5rem;
-      margin-bottom: 2rem;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
     }
     .cta p {
-      font-size: 1.25rem;
-      margin-bottom: 3rem;
+      font-size: 1.15rem;
+      margin-bottom: 2.5rem;
       color: var(--text-secondary);
-      font-weight: 300;
     }
     /* Footer */
     footer {
       padding: 5rem 0 2rem;
+      border-top: 1px solid var(--border-subtle);
       background-color: var(--bg-color);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
     .footer-grid {
       display: grid;
@@ -409,166 +649,205 @@
       margin-bottom: 4rem;
     }
     .footer-col h4 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      font-family: var(--font-primary);
-      font-weight: 500;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      color: var(--text-secondary);
     }
     .footer-col p {
       color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
       font-size: 0.9rem;
+      max-width: 300px;
     }
     .footer-links {
       list-style: none;
     }
     .footer-links li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.7rem;
     }
     .footer-links a {
       text-decoration: none;
       color: var(--text-secondary);
       font-size: 0.9rem;
-      font-weight: 300;
       transition: color 0.3s;
     }
     .footer-links a:hover {
       color: var(--accent-color);
     }
     .copyright {
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.875rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      font-weight: 300;
     }
-    /* Enhanced Modal Styles */
+    .copyright a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .copyright a:hover {
+      color: var(--accent-color);
+    }
+    /* Modal Styles */
     .modal {
-    display: none;
-    position: fixed;
-    z-index: 200;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(10, 11, 15, 0);
-    transition: background-color 0.4s ease-out;
-    backdrop-filter: blur(0px);
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.4s ease-out;
+      backdrop-filter: blur(0px);
     }
-
     .modal.active {
-    background-color: rgba(10, 11, 15, 0.9);
-    backdrop-filter: blur(5px);
+      background-color: var(--overlay);
+      backdrop-filter: blur(5px);
     }
-
     .modal-content {
-    background-color: var(--bg-secondary);
-    margin: 15% auto;
-    padding: 2rem;
-    border: 1px solid var(--accent-color);
-    width: 80%;
-    max-width: 400px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background-color: var(--bg-secondary);
+      margin: 15% auto;
+      padding: 2.25rem;
+      border: 1px solid var(--border-subtle);
+      width: 80%;
+      max-width: 420px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transform: translateY(-50px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-
     .modal.active .modal-content {
-    transform: translateY(0);
-    opacity: 1;
+      transform: translateY(0);
+      opacity: 1;
     }
-
+    .modal-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
     .modal-content input[type="email"] {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 1rem 0;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: border-color 0.3s ease;
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1.25rem 0 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-primary);
+      transition: border-color 0.3s ease;
     }
-
     .modal-content input[type="email"]:focus {
-    border-color: var(--accent-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(82, 130, 255, 0.2);
+      border-color: var(--accent-color);
+      outline: none;
+      box-shadow: 0 0 0 3px var(--accent-soft);
     }
-
     .close {
-    float: right;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
+      float: right;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-secondary);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.3s ease;
     }
-
     .close:hover {
-    color: var(--accent-color);
-    transform: rotate(90deg);
+      color: var(--accent-color);
     }
-
-    /* Enhanced Message Styles */
+    /* Message Styles */
     .message-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 300;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 300;
     }
-
     .message {
-    background-color: var(--bg-secondary);
-    color: var(--text-color);
-    padding: 1rem 1.5rem;
-    margin-bottom: 0.5rem;
-    border-left: 4px solid var(--accent-color);
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    max-width: 300px;
+      background-color: var(--bg-secondary);
+      color: var(--text-color);
+      padding: 1rem 1.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-color);
+      border-radius: 6px;
+      box-shadow: 0 2px 10px var(--shadow-color);
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      max-width: 320px;
     }
-
     .message.show {
-    opacity: 1;
-    transform: translateX(0);
+      opacity: 1;
+      transform: translateX(0);
     }
-
     .message.fade-out {
-    opacity: 0;
-    transform: translateX(50px);
+      opacity: 0;
+      transform: translateX(50px);
     }
-
-    .message::before {
-    content: '';
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    margin-right: 10px;
-    vertical-align: middle;
-    animation: pulse 1.5s infinite;
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .card-grid,
+      .usecase-grid,
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+      .problem-grid,
+      .security-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .hero h1 {
+        font-size: 3.25rem;
+      }
     }
-
-    @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(82, 130, 255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(82, 130, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(82, 130, 255, 0);
-    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 9rem 0 5rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p.subhead {
+        font-size: 1.05rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .section {
+        padding: 4.5rem 0;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+      .cta h2 {
+        font-size: 2.1rem;
+      }
+      .card-grid,
+      .usecase-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -577,15 +856,19 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#" class="logo">KOLAS</a>
+        <a href="#" class="logo">KOLAS<span>.</span></a>
         <ul class="nav-links">
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#data">Technology</a></li>
-          <li><a href="#solutions">Use Cases</a></li>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="#agents">Agents</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="#security">Security</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Contact Us</a>
-        <a href="https://portal.kolastechnologies.com/login" class="btn btn-outline">Login</a>
+        <div class="nav-actions">
+          <a href="#demo" class="btn btn-primary btn-sm">Book a Call</a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </div>
       </nav>
     </div>
   </header>
@@ -594,163 +877,346 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Cloud-Based Scraping Solutions</h1>
-        <p>Enterprise data extraction and lead generation for real estate and financial firms. We surface the data your competitors can't find.</p>
+        <span class="eyebrow">Kolas Technologies</span>
+        <h1>AI Infrastructure for Investment Teams</h1>
+        <p class="subhead">Kolas builds secure knowledge layers and specialist AI agents that help investment and operations teams search firm memory, automate diligence, monitor portfolios, enrich CRMs, and generate source-cited reporting.</p>
         <div class="btn-group">
-          <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
-          <a href="#demo" class="btn btn-outline">Request Demo</a>
+          <a href="#demo" class="btn btn-primary">Book a Call</a>
+          <a href="#agents" class="btn btn-outline">Explore Agents</a>
+        </div>
+        <p class="hero-credibility">Built from real workflows across venture capital, wealth management, and commercial real estate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section section-alt" id="problem">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-copy">
+          <span class="eyebrow">The Problem</span>
+          <h2 class="section-title">Your firm&rsquo;s knowledge is scattered.</h2>
+          <p>Investment firms already have the data that should make AI useful: memos, decks, CRM notes, meeting transcripts, portfolio updates, diligence files, SharePoint folders, Drive folders, Slack threads, email, and team memory.</p>
+          <p>The problem is that this knowledge is fragmented — spread across tools that don&rsquo;t talk to each other, and locked in the heads of individual partners.</p>
+          <div class="chip-row">
+            <span class="chip">Memos</span>
+            <span class="chip">Decks</span>
+            <span class="chip">CRM notes</span>
+            <span class="chip">Transcripts</span>
+            <span class="chip">Portfolio updates</span>
+            <span class="chip">Diligence files</span>
+            <span class="chip">SharePoint</span>
+            <span class="chip">Drive</span>
+            <span class="chip">Slack</span>
+            <span class="chip">Email</span>
+            <span class="chip">Team memory</span>
+          </div>
+        </div>
+        <div class="questions-card">
+          <h3>Generic AI tools can summarize documents. They usually can&rsquo;t answer:</h3>
+          <ul>
+            <li><i class="fas fa-question-circle"></i>Have we seen this company before?</li>
+            <li><i class="fas fa-question-circle"></i>What did we think last time?</li>
+            <li><i class="fas fa-question-circle"></i>Which partner has context?</li>
+            <li><i class="fas fa-question-circle"></i>What risks came up in prior diligence?</li>
+            <li><i class="fas fa-question-circle"></i>How does this fit our thesis?</li>
+            <li><i class="fas fa-question-circle"></i>What source supports this conclusion?</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Solutions Section -->
-  <section class="section section-dark" id="solutions">
+  <!-- Platform / Knowledge Layer Section -->
+  <section class="section" id="platform">
+    <div class="container">
+      <div class="platform-intro">
+        <span class="eyebrow">The Platform</span>
+        <h2 class="section-title">The Kolas Knowledge Layer</h2>
+        <p class="section-subtitle">One secure foundation for firm-specific AI.</p>
+        <p>Kolas connects and organizes your firm&rsquo;s internal knowledge into a secure, permission-aware, source-cited layer that AI agents can use. Your existing tools stay in place — we make their knowledge usable.</p>
+      </div>
+      <div class="arch">
+        <div class="arch-layer">
+          <div class="arch-label">
+            <span class="num">01</span>
+            <h3>Firm Data Sources</h3>
+          </div>
+          <div class="arch-chips">
+            <span class="chip">SharePoint / OneNote</span>
+            <span class="chip">Google Drive</span>
+            <span class="chip">Slack / Teams</span>
+            <span class="chip">Email</span>
+            <span class="chip">CRM / DealCloud</span>
+            <span class="chip">Memos &amp; Decks</span>
+            <span class="chip">Meetings &amp; Transcripts</span>
+            <span class="chip">Portfolio Updates</span>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer arch-core">
+          <div class="arch-label">
+            <span class="num">02</span>
+            <h3>Kolas Knowledge Layer</h3>
+          </div>
+          <div class="arch-chips">
+            <span class="chip">Ingestion &amp; Extraction</span>
+            <span class="chip">Ontology</span>
+            <span class="chip">Permissions</span>
+            <span class="chip">Search</span>
+            <span class="chip">Retrieval</span>
+            <span class="chip">Citations</span>
+            <span class="chip">Audit Logs</span>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-label">
+            <span class="num">03</span>
+            <h3>Kolas Agents</h3>
+          </div>
+          <div class="arch-chips">
+            <span class="chip">Sourcing</span>
+            <span class="chip">Diligence</span>
+            <span class="chip">Deal Memory</span>
+            <span class="chip">Portfolio Monitoring</span>
+            <span class="chip">LP Reporting</span>
+            <span class="chip">CRM Enrichment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agents Section -->
+  <section class="section section-alt" id="agents">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Our Solutions</h2>
-        <p class="section-subtitle">High-volume, cloud-native data extraction built for real estate operators and financial professionals who need an edge.</p>
+        <span class="eyebrow">Agents</span>
+        <h2 class="section-title">Specialist agents built on your firm&rsquo;s context</h2>
+        <p class="section-subtitle">Every agent runs on the knowledge layer — permission-aware, and with every material claim traced to its source.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-bullseye"></i>
-          </div>
-          <h3>Lead Generation</h3>
-          <p>Automated identification and enrichment of high-intent prospects across property listings, ownership records, and public filings — delivered clean and ready to work.</p>
+      <div class="card-grid">
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-history"></i></div>
+          <h3>Deal Memory Agent</h3>
+          <p>Ask &ldquo;have we seen this before?&rdquo; and retrieve prior companies, memos, partner context, past risks, and source documents.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <h3>Real Estate Data Extraction</h3>
-          <p>Scrape and normalize data from MLS feeds, county assessor databases, permit records, and off-market sources at scale with daily refresh cycles.</p>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-filter"></i></div>
+          <h3>Thesis-Aware Deck Triage</h3>
+          <p>Screen inbound decks against firm mandates and internal theses. Surface fit, strengths, risks, missing data, similar companies, and diligence questions.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3>Financial Document Scraping</h3>
-          <p>Extract structured data from SEC filings, earnings reports, loan tape disclosures, and regulatory documents — parsed, deduplicated, and indexed for immediate use.</p>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-crosshairs"></i></div>
+          <h3>Sourcing Agent</h3>
+          <p>Scan approved sources, CRM records, conference lists, founder databases, publications, news, and market maps for companies that match your theses — each recommendation explains why it matters and cites the source.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-user-tie"></i>
-          </div>
-          <h3>Contact Intelligence</h3>
-          <p>Match properties and entities to verified decision-maker contacts. Phone, email, and company data enriched from multiple independent sources and cross-validated.</p>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Memo Support Agent</h3>
+          <p>Draft IC memo sections, company briefs, and deal summaries from the firm&rsquo;s own documents, with every material claim traced to the source.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-cloud"></i>
-          </div>
-          <h3>Cloud Pipeline Delivery</h3>
-          <p>Data delivered directly to your warehouse, CRM, or API endpoint on a schedule you define. No manual exports. No maintenance overhead on your end.</p>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Portfolio Monitoring Agent</h3>
+          <p>Batch-read portfolio updates and flag missed milestones, trial delays, burn changes, hiring updates, regulatory movement, and items needing partner attention.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-drafting-compass"></i>
-          </div>
-          <h3>Custom Extraction Jobs</h3>
-          <p>Have a specific data target in mind? We scope and deploy bespoke scraping infrastructure for any source — public or gated — with turnaround measured in days.</p>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-file-invoice"></i></div>
+          <h3>LP Reporting Agent</h3>
+          <p>Generate draft quarterly LP updates from portfolio updates, internal notes, approved performance data, and previous reports. Flags missing inputs and cites the underlying source material.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-address-book"></i></div>
+          <h3>CRM Enrichment Agent</h3>
+          <p>Clean and enrich CRM records with sector, stage, geography, indication, last-interaction summaries, missing fields, stale records, and suggested follow-ups.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Conference Prep Agent</h3>
+          <p>Turn attendee lists into prioritized meeting targets using CRM history, theses, prior interactions, and internal context.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Data Visualization Section -->
-  <section class="data-viz" id="data">
+  <!-- Use Cases Section -->
+  <section class="section" id="use-cases">
     <div class="container">
-      <div class="data-grid">
-        <div class="data-content">
-          <h2>Data at the Speed Your Pipeline Demands</h2>
-          <p>Our cloud infrastructure runs continuous extraction jobs across thousands of sources simultaneously, giving real estate and financial teams a live data advantage without building anything in-house.</p>
-          <div class="data-points">
-            <div class="data-point">
-              <h4>200,000+</h4>
-              <p>Leads generated and enriched per month</p>
-            </div>
-            <div class="data-point">
-              <h4>99.4%</h4>
-              <p>Uptime across all active scraping pipelines</p>
-            </div>
-            <div class="data-point">
-              <h4>24hr</h4>
-              <p>Average turnaround on custom extraction requests</p>
-            </div>
-            <div class="data-point">
-              <h4>3x</h4>
-              <p>More qualified leads per campaign vs. list vendors</p>
-            </div>
-          </div>
-          <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+      <div class="section-header">
+        <span class="eyebrow">Use Cases</span>
+        <h2 class="section-title">Built for the investment lifecycle.</h2>
+      </div>
+      <div class="usecase-grid">
+        <div class="usecase-card"><i class="fas fa-map"></i>Sourcing and market mapping</div>
+        <div class="usecase-card"><i class="fas fa-inbox"></i>Inbound deck triage</div>
+        <div class="usecase-card"><i class="fas fa-clipboard-check"></i>Diligence and IC memo support</div>
+        <div class="usecase-card"><i class="fas fa-search"></i>Deal memory search</div>
+        <div class="usecase-card"><i class="fas fa-chart-area"></i>Portfolio monitoring</div>
+        <div class="usecase-card"><i class="fas fa-file-signature"></i>LP reporting</div>
+        <div class="usecase-card"><i class="fas fa-broom"></i>CRM enrichment and hygiene</div>
+        <div class="usecase-card"><i class="fas fa-book-open"></i>Internal knowledge search</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof / Results Section -->
+  <section class="section section-alt" id="proof">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="eyebrow">Proof</span>
+        <h2 class="section-title">Built from real operating workflows.</h2>
+      </div>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-tag">Wealth &amp; Investment Management</div>
+          <div class="proof-stat">~30 hrs</div>
+          <div class="proof-stat-label">saved per week across analyst workflows</div>
+          <p class="proof-desc">Research automation for a wealth management firm — spanning research, enrichment, and lead-generation workflows.</p>
         </div>
-        <div class="data-image">
-          <div class="data-graphic">
-            <i class="fas fa-chart-network"></i>
-          </div>
+        <div class="proof-card">
+          <div class="proof-tag">Commercial Real Estate</div>
+          <div class="proof-stat">1,000s</div>
+          <div class="proof-stat-label">of property datapoints aggregated</div>
+          <p class="proof-desc">Pilot with a Fortune 500 real estate brokerage — aggregating commercial property data and reducing manual research work.</p>
         </div>
+        <div class="proof-card">
+          <div class="proof-tag">Venture Capital</div>
+          <div class="proof-stat">Pilot &rarr; platform</div>
+          <div class="proof-stat-label">knowledge infrastructure and AI workflows</div>
+          <p class="proof-desc">Building knowledge infrastructure and agent workflows for a venture capital investment team.</p>
+        </div>
+      </div>
+      <p class="proof-note">Selected engagements. References available on request.</p>
+    </div>
+  </section>
+
+  <!-- Security Section -->
+  <section class="section" id="security">
+    <div class="container">
+      <div class="security-grid">
+        <div class="security-copy">
+          <span class="eyebrow">Security</span>
+          <h2 class="section-title">Designed for sensitive firm data.</h2>
+          <p>The answer is not uploading everything into generic AI tools. Kolas designs systems where your firm controls where data lives, who can access it, and what each agent can see.</p>
+        </div>
+        <ul class="security-list">
+          <li><i class="fas fa-check"></i>Permission-aware retrieval</li>
+          <li><i class="fas fa-check"></i>Source-cited outputs</li>
+          <li><i class="fas fa-check"></i>Audit logs</li>
+          <li><i class="fas fa-check"></i>Role and team-based access</li>
+          <li><i class="fas fa-check"></i>Redaction and exclusion of sensitive documents</li>
+          <li><i class="fas fa-check"></i>Azure, AWS, private cloud, VPC, or hybrid deployments</li>
+          <li><i class="fas fa-check"></i>Human-in-the-loop workflows</li>
+          <li><i class="fas fa-check"></i>Model providers do not train on firm data unless explicitly approved</li>
+          <li><i class="fas fa-check"></i>Data residency and cross-border access controls when needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work Section -->
+  <section class="section section-alt" id="how-we-work">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How We Work</span>
+        <h2 class="section-title">From pilot to platform.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Map the knowledge</h3>
+          <p>Identify where the important data lives and which workflow matters most.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Build the foundation</h3>
+          <p>Create a controlled knowledge layer using a safe dataset.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Deploy the first agent</h3>
+          <p>Launch one high-value workflow such as deal memory search, deck triage, or reporting.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <h3>Expand</h3>
+          <p>Add new agents on top of the same foundation.</p>
+        </div>
+      </div>
+      <div class="pilot-callout">
+        <p><strong>Start small.</strong> A focused 2&ndash;4 week proof of concept using a safe dataset and one agent. If useful, expand into an 8&ndash;12 week implementation.</p>
+        <a href="#demo" class="btn btn-primary">Scope a Pilot</a>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section class="section section-dark" id="about">
+  <section class="section" id="about">
     <div class="container">
-      <div class="data-grid">
-        <div class="data-content">
-          <h2>Built for Firms That Move on Data</h2>
-          <p>Kolas Technologies is a cloud infrastructure company focused on one thing: getting hard-to-reach data into the hands of real estate operators and financial professionals faster than anyone else.</p>
-          <p>We operate purpose-built scraping infrastructure across hundreds of sources — property records, ownership databases, financial filings, and contact directories — and deliver that data through clean, reliable pipelines your team can actually use.</p>
-          <p>No data brokers. No stale lists. Just live, structured data pulled from source.</p>
+      <div class="about-grid">
+        <div>
+          <span class="eyebrow">About</span>
+          <h2 class="section-title">A product company, built from practice.</h2>
         </div>
-        <div class="data-image">
-          <div class="data-graphic">
-            <i class="fas fa-server"></i>
-          </div>
+        <div>
+          <p>Kolas Technologies builds AI infrastructure and custom agents for investment and operations teams. The platform grew out of real engagements across venture capital, wealth management, and commercial real estate — not a whiteboard.</p>
+          <p>We implement the platform through focused engagements: your team keeps its tools, and we do the work of making their knowledge usable — from data extraction and ingestion to production agents. Boutique by design, so every deployment is grounded in how your firm actually works.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta">
+  <!-- Final CTA Section -->
+  <section class="cta" id="contact">
     <div class="container">
       <div class="cta-content">
-        <h2>Start Pulling Better Data Today</h2>
-        <p>Tell us what you're targeting. We'll scope it, build it, and deliver it — no long procurement cycles, no BS.</p>
-        <a href="#contact" class="btn btn-primary">Request a Demonstration</a>
+        <h2>Make your firm&rsquo;s knowledge usable by AI.</h2>
+        <p>If your team is experimenting with AI but struggling with scattered context, siloed systems, or untrusted outputs, Kolas can help build the foundation.</p>
+        <a href="#demo" class="btn btn-primary">Book a Call</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>Company</h4>
-          <p>Cloud-based scraping and lead generation for real estate and financial firms.</p>
+          <h4>Kolas Technologies</h4>
+          <p>Secure knowledge layers and specialist AI agents for investment and operations teams.</p>
         </div>
         <div class="footer-col">
-          <h4>Solutions</h4>
-          <p>Lead Generation, Property Data, Financial Documents, Contact Intelligence</p>
+          <h4>Site</h4>
+          <ul class="footer-links">
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#agents">Agents</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul class="footer-links">
+            <li><a href="#platform">Knowledge layer</a></li>
+            <li><a href="#agents">Specialist agents</a></li>
+            <li><a href="#platform">Data &amp; document extraction</a></li>
+            <li><a href="#security">Secure deployments</a></li>
+          </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <p>Get in touch to scope your data project.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Follow Us</h4>
           <ul class="footer-links">
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a href="#demo">Book a call</a></li>
+            <li><a href="https://portal.kolastechnologies.com/login">Client portal</a></li>
           </ul>
         </div>
       </div>
       <div class="copyright">
-        © 2026 Kolas Technologies. All rights reserved.
+        <span>&copy; 2026 Kolas Technologies. All rights reserved.</span>
+        <span>AI infrastructure &amp; agents for investment teams.</span>
       </div>
     </div>
   </footer>
@@ -759,15 +1225,34 @@
   <div id="emailModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>Enter your email</h3>
-      <input type="email" id="userEmail" placeholder="Your email" required />
-      <button id="submitEmail" class="btn btn-primary">Submit</button>
+      <h3>Book a call</h3>
+      <p>Leave your work email and we&rsquo;ll reach out to schedule a 30-minute intro.</p>
+      <input type="email" id="userEmail" placeholder="you@firm.com" required />
+      <input type="text" id="companyField" name="company" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px;" aria-hidden="true" />
+      <button id="submitEmail" class="btn btn-primary">Request a Call</button>
     </div>
   </div>
+
+  <!-- Theme toggle -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('themeToggle');
+      const icon = toggle.querySelector('i');
+      function render() {
+        icon.className = document.documentElement.dataset.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+      toggle.addEventListener('click', function () {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('kolas-theme', next); } catch (e) {}
+        render();
+      });
+      render();
+    })();
+  </script>
 
   <!-- Include external JS files -->
   <script src="js/messages.js"></script>
   <script src="js/modal.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
