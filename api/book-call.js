@@ -58,5 +58,7 @@ module.exports = async (req, res) => {
     return res.status(502).json({ error: 'Could not send your request. Please try again.' });
   }
 
+  const result = await response.json().catch(() => ({}));
+  console.log('book-call: sent', result.id, 'to', process.env.BOOKING_TO, 'for', email);
   return res.status(200).json({ ok: true });
 };
