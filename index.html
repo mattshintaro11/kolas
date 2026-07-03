@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kolas Technologies | AI Infrastructure for Investment Teams</title>
-  <meta name="description" content="Kolas builds secure knowledge layers and specialist AI agents for diligence, sourcing, reporting, portfolio monitoring, CRM enrichment, and internal research." />
+  <title>Kolas Technologies | AI That Learns With Your Organization</title>
+  <meta name="description" content="Kolas builds knowledge infrastructure for knowledge-intensive organizations — connecting the systems you already use so AI workflows run on full organizational context and improve with every use." />
   <script>
     try { document.documentElement.dataset.theme = localStorage.getItem('kolas-theme') || 'light'; } catch (e) {}
   </script>
@@ -793,6 +793,182 @@
       opacity: 0;
       transform: translateX(50px);
     }
+    /* Architecture feedback rail */
+    .arch {
+      position: relative;
+    }
+    .arch-return {
+      position: absolute;
+      right: -50px;
+      width: 36px;
+      border: 1px dashed var(--accent-color);
+      border-left: none;
+      border-radius: 0 10px 10px 0;
+      opacity: 0.75;
+    }
+    .arch-return .arrow {
+      position: absolute;
+      top: -9px;
+      left: -6px;
+      color: var(--accent-color);
+      font-size: 0.85rem;
+    }
+    .arch-return .label {
+      position: absolute;
+      top: 50%;
+      right: -3.4em;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      white-space: nowrap;
+    }
+    .arch-caption {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+    /* Continuous learning loop */
+    .loop {
+      max-width: 980px;
+      margin: 3.5rem auto 0;
+    }
+    .loop-row {
+      display: flex;
+      align-items: stretch;
+    }
+    .loop-node {
+      flex: 1;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+    }
+    .loop-node h4 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .loop-node p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .loop-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 0.7rem;
+      color: var(--accent-color);
+    }
+    .loop-return {
+      height: 44px;
+      margin: 0 70px;
+      border: 1px dashed var(--accent-color);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      position: relative;
+      opacity: 0.8;
+    }
+    .loop-return .arrow {
+      position: absolute;
+      left: -7px;
+      top: -13px;
+      color: var(--accent-color);
+      font-size: 0.85rem;
+    }
+    .loop-return .label {
+      position: absolute;
+      left: 50%;
+      bottom: -0.75em;
+      transform: translateX(-50%);
+      background-color: var(--bg-secondary);
+      padding: 0 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      white-space: nowrap;
+    }
+    .loop-copy {
+      max-width: 720px;
+      margin: 3.5rem auto 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+    .vision-note {
+      max-width: 880px;
+      margin: 3rem auto 0;
+      border: 1px dashed var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .vision-note strong {
+      color: var(--text-color);
+      font-weight: 600;
+    }
+    /* What changes cards */
+    .changes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .change-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.6rem 1.75rem;
+    }
+    .change-from {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .change-to {
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .change-to i {
+      color: var(--accent-color);
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+    }
+    @media (max-width: 1160px) {
+      .arch-return {
+        display: none;
+      }
+    }
+    @media (max-width: 1024px) {
+      .changes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 700px) {
+      .changes-grid {
+        grid-template-columns: 1fr;
+      }
+      .loop-row {
+        flex-direction: column;
+      }
+      .loop-arrow {
+        justify-content: center;
+        padding: 0.5rem 0;
+      }
+      .loop-arrow i {
+        transform: rotate(90deg);
+      }
+      .loop-return {
+        margin: 0 12px;
+      }
+    }
     /* Responsive */
     @media (max-width: 1024px) {
       .card-grid,
@@ -858,9 +1034,9 @@
       <nav>
         <a href="#" class="logo">KOLAS<span>.</span></a>
         <ul class="nav-links">
-          <li><a href="#platform">Platform</a></li>
+          <li><a href="#platform">Infrastructure</a></li>
+          <li><a href="#learning">Learning</a></li>
           <li><a href="#agents">Agents</a></li>
-          <li><a href="#use-cases">Use Cases</a></li>
           <li><a href="#security">Security</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -878,13 +1054,13 @@
     <div class="container">
       <div class="hero-content">
         <span class="eyebrow">Kolas Technologies</span>
-        <h1>AI Infrastructure for Investment Teams</h1>
-        <p class="subhead">Kolas builds secure knowledge layers and specialist AI agents that help investment and operations teams search firm memory, automate diligence, monitor portfolios, enrich CRMs, and generate source-cited reporting.</p>
+        <h1>Build AI that learns with your organization.</h1>
+        <p class="subhead">Kolas builds the infrastructure that makes it possible — a secure knowledge layer across the systems you already use, AI workflows that run on your organization&rsquo;s full context, and feedback loops that make every output better than the last.</p>
         <div class="btn-group">
           <a href="#demo" class="btn btn-primary">Book a Call</a>
-          <a href="#agents" class="btn btn-outline">Explore Agents</a>
+          <a href="#platform" class="btn btn-outline">See How It Works</a>
         </div>
-        <p class="hero-credibility">Built from real workflows across venture capital, wealth management, and commercial real estate</p>
+        <p class="hero-credibility">Built from real workflows across investment management, wealth management, accounting, and commercial real estate</p>
       </div>
     </div>
   </section>
@@ -894,33 +1070,34 @@
     <div class="container">
       <div class="problem-grid">
         <div class="problem-copy">
-          <span class="eyebrow">The Problem</span>
-          <h2 class="section-title">Your firm&rsquo;s knowledge is scattered.</h2>
-          <p>Investment firms already have the data that should make AI useful: memos, decks, CRM notes, meeting transcripts, portfolio updates, diligence files, SharePoint folders, Drive folders, Slack threads, email, and team memory.</p>
-          <p>The problem is that this knowledge is fragmented — spread across tools that don&rsquo;t talk to each other, and locked in the heads of individual partners.</p>
+          <span class="eyebrow">Today</span>
+          <h2 class="section-title">Your organization&rsquo;s knowledge is scattered.</h2>
+          <p>Your organization already has the knowledge that should make AI useful: memos, reports, client files, CRM notes, meeting transcripts, email threads, and years of decisions. The problem isn&rsquo;t collecting more information.</p>
+          <p>The problem is that this knowledge is fragmented and siloed — difficult to retrieve, difficult to trust, and impossible for AI to reason over consistently.</p>
+          <p>None of this gets fixed by another standalone tool. It gets fixed with infrastructure.</p>
           <div class="chip-row">
             <span class="chip">Memos</span>
-            <span class="chip">Decks</span>
+            <span class="chip">Reports</span>
             <span class="chip">CRM notes</span>
             <span class="chip">Transcripts</span>
-            <span class="chip">Portfolio updates</span>
+            <span class="chip">Client files</span>
             <span class="chip">Diligence files</span>
             <span class="chip">SharePoint</span>
             <span class="chip">Drive</span>
             <span class="chip">Slack</span>
             <span class="chip">Email</span>
+            <span class="chip">Internal databases</span>
             <span class="chip">Team memory</span>
           </div>
         </div>
         <div class="questions-card">
-          <h3>Generic AI tools can summarize documents. They usually can&rsquo;t answer:</h3>
+          <h3>What that looks like day to day:</h3>
           <ul>
-            <li><i class="fas fa-question-circle"></i>Have we seen this company before?</li>
-            <li><i class="fas fa-question-circle"></i>What did we think last time?</li>
-            <li><i class="fas fa-question-circle"></i>Which partner has context?</li>
-            <li><i class="fas fa-question-circle"></i>What risks came up in prior diligence?</li>
-            <li><i class="fas fa-question-circle"></i>How does this fit our thesis?</li>
-            <li><i class="fas fa-question-circle"></i>What source supports this conclusion?</li>
+            <li><i class="fas fa-times"></i>The same questions get answered again and again</li>
+            <li><i class="fas fa-times"></i>Context is rebuilt from scratch for every deal, client, and report</li>
+            <li><i class="fas fa-times"></i>Previous work is forgotten — or lives in one person&rsquo;s head</li>
+            <li><i class="fas fa-times"></i>Documentation is stale the day it&rsquo;s written</li>
+            <li><i class="fas fa-times"></i>AI tools answer generically, with none of your organization&rsquo;s context</li>
           </ul>
         </div>
       </div>
@@ -931,16 +1108,20 @@
   <section class="section" id="platform">
     <div class="container">
       <div class="platform-intro">
-        <span class="eyebrow">The Platform</span>
-        <h2 class="section-title">The Kolas Knowledge Layer</h2>
-        <p class="section-subtitle">One secure foundation for firm-specific AI.</p>
-        <p>Kolas connects and organizes your firm&rsquo;s internal knowledge into a secure, permission-aware, source-cited layer that AI agents can use. Your existing tools stay in place — we make their knowledge usable.</p>
+        <span class="eyebrow">The Foundation</span>
+        <h2 class="section-title">Your systems stay. Kolas connects them.</h2>
+        <p class="section-subtitle">One secure intelligence layer across everything your organization already knows.</p>
+        <p>Kolas connects SharePoint, Drive, Slack, email, CRM, and internal databases into a permission-aware, source-cited knowledge layer — then puts workflows, feedback, and people on top. Nothing migrates. Everything becomes usable.</p>
       </div>
       <div class="arch">
+        <div class="arch-return" id="archReturn" aria-hidden="true">
+          <i class="fas fa-arrow-left arrow"></i>
+          <span class="label">Feedback</span>
+        </div>
         <div class="arch-layer">
           <div class="arch-label">
             <span class="num">01</span>
-            <h3>Firm Data Sources</h3>
+            <h3>Existing Systems</h3>
           </div>
           <div class="arch-chips">
             <span class="chip">SharePoint / OneNote</span>
@@ -948,20 +1129,20 @@
             <span class="chip">Slack / Teams</span>
             <span class="chip">Email</span>
             <span class="chip">CRM / DealCloud</span>
-            <span class="chip">Memos &amp; Decks</span>
-            <span class="chip">Meetings &amp; Transcripts</span>
-            <span class="chip">Portfolio Updates</span>
+            <span class="chip">Documents &amp; Decks</span>
+            <span class="chip">Meeting Transcripts</span>
+            <span class="chip">Internal Databases</span>
           </div>
         </div>
         <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
-        <div class="arch-layer arch-core">
+        <div class="arch-layer arch-core" id="archCore">
           <div class="arch-label">
             <span class="num">02</span>
             <h3>Kolas Knowledge Layer</h3>
           </div>
           <div class="arch-chips">
             <span class="chip">Ingestion &amp; Extraction</span>
-            <span class="chip">Ontology</span>
+            <span class="chip">Structure</span>
             <span class="chip">Permissions</span>
             <span class="chip">Search</span>
             <span class="chip">Retrieval</span>
@@ -973,16 +1154,123 @@
         <div class="arch-layer">
           <div class="arch-label">
             <span class="num">03</span>
-            <h3>Kolas Agents</h3>
+            <h3>Shared Learning</h3>
           </div>
           <div class="arch-chips">
-            <span class="chip">Sourcing</span>
-            <span class="chip">Diligence</span>
-            <span class="chip">Deal Memory</span>
-            <span class="chip">Portfolio Monitoring</span>
-            <span class="chip">LP Reporting</span>
-            <span class="chip">CRM Enrichment</span>
+            <span class="chip">Analyst Edits</span>
+            <span class="chip">Partner Feedback</span>
+            <span class="chip">Corrections</span>
+            <span class="chip">Preferences</span>
+            <span class="chip">Institutional Memory</span>
           </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer">
+          <div class="arch-label">
+            <span class="num">04</span>
+            <h3>Agents &amp; Workflows</h3>
+          </div>
+          <div class="arch-chips">
+            <span class="chip">Research</span>
+            <span class="chip">Diligence</span>
+            <span class="chip">Reporting</span>
+            <span class="chip">Portfolio Monitoring</span>
+            <span class="chip">CRM Enrichment</span>
+            <span class="chip">Knowledge Search</span>
+            <span class="chip">Operations</span>
+          </div>
+        </div>
+        <div class="arch-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="arch-layer" id="archPeople">
+          <div class="arch-label">
+            <span class="num">05</span>
+            <h3>People</h3>
+          </div>
+          <div class="arch-chips">
+            <span class="chip">Analysts</span>
+            <span class="chip">Partners</span>
+            <span class="chip">Operations Teams</span>
+            <span class="chip">Leadership</span>
+          </div>
+        </div>
+      </div>
+      <p class="arch-caption">Edits and feedback flow back into the knowledge layer — every workflow makes the next one smarter.</p>
+    </div>
+  </section>
+
+  <!-- Continuous Learning Section -->
+  <section class="section section-alt" id="learning">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="eyebrow">Continuous Learning</span>
+        <h2 class="section-title">Knowledge that compounds.</h2>
+        <p class="section-subtitle">Most AI starts from zero every time. Kolas is built so your organization&rsquo;s intelligence improves with use.</p>
+      </div>
+      <div class="loop">
+        <div class="loop-row">
+          <div class="loop-node">
+            <h4>Knowledge</h4>
+            <p>The organization&rsquo;s context — structured, permissioned, cited</p>
+          </div>
+          <div class="loop-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div class="loop-node">
+            <h4>Workflow</h4>
+            <p>An agent drafts a memo, report, or answer from it</p>
+          </div>
+          <div class="loop-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div class="loop-node">
+            <h4>Human feedback</h4>
+            <p>Analysts edit. Partners correct. Decisions land.</p>
+          </div>
+          <div class="loop-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div class="loop-node">
+            <h4>Better knowledge</h4>
+            <p>The correction is captured instead of lost</p>
+          </div>
+        </div>
+        <div class="loop-return">
+          <i class="fas fa-arrow-up arrow"></i>
+          <span class="label">Future workflows start smarter</span>
+        </div>
+      </div>
+      <p class="loop-copy">Every workflow creates new knowledge. Human corrections improve future outputs. And because every workflow runs on the same foundation, every workflow improves every other workflow.</p>
+      <div class="vision-note">
+        <p><strong>Where this is honest today:</strong> we are not claiming AI magically learns everything on its own. We are building the infrastructure that makes compounding possible — feedback captured, knowledge structured, workflows that reuse both. The long-term direction is higher-order decision support, earned one workflow at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Changes Section -->
+  <section class="section" id="changes">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Difference</span>
+        <h2 class="section-title">What changes after deploying Kolas?</h2>
+      </div>
+      <div class="changes-grid">
+        <div class="change-card">
+          <p class="change-from">Instead of generic AI&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>Your AI understands your organization.</p>
+        </div>
+        <div class="change-card">
+          <p class="change-from">Instead of rebuilding context&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>Knowledge compounds.</p>
+        </div>
+        <div class="change-card">
+          <p class="change-from">Instead of every workflow existing independently&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>Every workflow improves the next.</p>
+        </div>
+        <div class="change-card">
+          <p class="change-from">Instead of institutional knowledge living inside employees&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>Knowledge becomes organizational.</p>
+        </div>
+        <div class="change-card">
+          <p class="change-from">Instead of static documentation&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>Your knowledge continuously evolves.</p>
+        </div>
+        <div class="change-card">
+          <p class="change-from">Instead of AI forgetting&hellip;</p>
+          <p class="change-to"><i class="fas fa-arrow-right"></i>The organization continuously learns.</p>
         </div>
       </div>
     </div>
@@ -992,9 +1280,9 @@
   <section class="section section-alt" id="agents">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Agents</span>
-        <h2 class="section-title">Specialist agents built on your firm&rsquo;s context</h2>
-        <p class="section-subtitle">Every agent runs on the knowledge layer — permission-aware, and with every material claim traced to its source.</p>
+        <span class="eyebrow">Applications</span>
+        <h2 class="section-title">What the foundation makes possible</h2>
+        <p class="section-subtitle">Agents are applications built on the knowledge layer — permission-aware, source-cited, and shaped by your firm&rsquo;s feedback. These are the ones we deploy most for investment teams, our deepest vertical today.</p>
       </div>
       <div class="card-grid">
         <div class="agent-card">
@@ -1142,7 +1430,7 @@
         <div class="step-card">
           <span class="step-num">04</span>
           <h3>Expand</h3>
-          <p>Add new agents on top of the same foundation.</p>
+          <p>Add new workflows on the same foundation — each one starts with everything the organization has already learned.</p>
         </div>
       </div>
       <div class="pilot-callout">
@@ -1158,11 +1446,11 @@
       <div class="about-grid">
         <div>
           <span class="eyebrow">About</span>
-          <h2 class="section-title">A product company, built from practice.</h2>
+          <h2 class="section-title">Infrastructure first.</h2>
         </div>
         <div>
-          <p>Kolas Technologies builds AI infrastructure and custom agents for investment and operations teams. The platform grew out of real engagements across venture capital, wealth management, and commercial real estate — not a whiteboard.</p>
-          <p>We implement the platform through focused engagements: your team keeps its tools, and we do the work of making their knowledge usable — from data extraction and ingestion to production agents. Boutique by design, so every deployment is grounded in how your firm actually works.</p>
+          <p>Kolas builds the infrastructure that lets organizations continuously improve how AI works for them. Today that&rsquo;s primarily investment firms, wealth management, accounting firms, operations teams, and commercial real estate — but the vision is broader than any one vertical.</p>
+          <p>Consulting is how organizations adopt the platform: we implement alongside your team, on your systems, starting with one workflow. The long-term vision is shared organizational intelligence — an organization whose AI is more useful every month than the month before.</p>
         </div>
       </div>
     </div>
@@ -1172,8 +1460,8 @@
   <section class="cta" id="contact">
     <div class="container">
       <div class="cta-content">
-        <h2>Make your firm&rsquo;s knowledge usable by AI.</h2>
-        <p>If your team is experimenting with AI but struggling with scattered context, siloed systems, or untrusted outputs, Kolas can help build the foundation.</p>
+        <h2>Build an organization that learns.</h2>
+        <p>If your team is experimenting with AI but fighting scattered context, siloed systems, and untrusted outputs, start with the foundation.</p>
         <a href="#demo" class="btn btn-primary">Book a Call</a>
       </div>
     </div>
@@ -1185,12 +1473,13 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Kolas Technologies</h4>
-          <p>Secure knowledge layers and specialist AI agents for investment and operations teams.</p>
+          <p>Knowledge infrastructure and continuously improving AI systems for knowledge-intensive organizations.</p>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
           <ul class="footer-links">
-            <li><a href="#platform">Platform</a></li>
+            <li><a href="#platform">Infrastructure</a></li>
+            <li><a href="#learning">Continuous Learning</a></li>
             <li><a href="#agents">Agents</a></li>
             <li><a href="#use-cases">Use Cases</a></li>
             <li><a href="#security">Security</a></li>
@@ -1201,7 +1490,8 @@
           <h4>Capabilities</h4>
           <ul class="footer-links">
             <li><a href="#platform">Knowledge layer</a></li>
-            <li><a href="#agents">Specialist agents</a></li>
+            <li><a href="#learning">Continuous learning</a></li>
+            <li><a href="#agents">Agents &amp; workflows</a></li>
             <li><a href="#platform">Data &amp; document extraction</a></li>
             <li><a href="#security">Secure deployments</a></li>
           </ul>
@@ -1216,7 +1506,7 @@
       </div>
       <div class="copyright">
         <span>&copy; 2026 Kolas Technologies. All rights reserved.</span>
-        <span>AI infrastructure &amp; agents for investment teams.</span>
+        <span>Infrastructure &rarr; Workflows &rarr; Feedback &rarr; Organizational learning</span>
       </div>
     </div>
   </footer>
@@ -1248,6 +1538,25 @@
         render();
       });
       render();
+    })();
+  </script>
+
+  <!-- Architecture feedback rail positioning -->
+  <script>
+    (function () {
+      const rail = document.getElementById('archReturn');
+      const core = document.getElementById('archCore');
+      const end = document.getElementById('archPeople');
+      if (!rail || !core || !end) return;
+      function layout() {
+        const top = core.offsetTop + core.offsetHeight / 2;
+        const bottom = end.offsetTop + end.offsetHeight / 2;
+        rail.style.top = top + 'px';
+        rail.style.height = Math.max(0, bottom - top) + 'px';
+      }
+      layout();
+      window.addEventListener('resize', layout);
+      window.addEventListener('load', layout);
     })();
   </script>
 
